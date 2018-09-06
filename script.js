@@ -1,7 +1,7 @@
-var button = document.getElementById("enter");
+var enterButton = document.getElementById("enter");
 var input = document.getElementById("userinput");
 var ul = document.querySelector("ul");
-
+var deleteAllButton = document.getElementById("deleteAll");
 
 
 function inputLength() {
@@ -42,11 +42,17 @@ function deleteItem(){
 	this.parentNode.remove();
 }
 
-button.addEventListener("click", addListAfterClick);
+function deleteAll(){
+	while (ul.firstChild) {
+		ul.removeChild(ul.firstChild);
+	}
+}
 
+enterButton.addEventListener("click", addListAfterClick);
 input.addEventListener("keypress", addListAfterKeypress);
-
 ul.addEventListener("click", markItemDone);
+deleteAllButton.addEventListener("click", deleteAll);
+
 
 function deleteButtonFunction(){
 	var deleteButtons = document.querySelectorAll(".delete");
